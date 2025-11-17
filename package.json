@@ -1,0 +1,26 @@
+{
+  "name": "tab-limiter",
+  "version": "1.0.0",
+  "description": "Chrome extension to limit the number of open tabs",
+  "main": "background.js",
+  "scripts": {
+    "generate-icons": "node tools/generate-icons.js",
+    "test": "echo \"No tests yet\" && exit 0"
+  },
+  "keywords": [
+    "chrome-extension",
+    "productivity",
+    "tabs",
+    "browser-extension"
+  ],
+  "author": "Alexandros Drivas",
+  "license": "MIT",
+  "devDependencies": {
+    "canvas": "^2.11.2"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/alexandrosdrivas/tab_limiter.git"
+  }
+}
+
