@@ -53,6 +53,39 @@ async function updateTabCount() {
   } else if (currentCount >= maxTabs * 0.8) {
     progressBarEl.classList.add('warning');
   }
+  
+  // Update warning banner
+  updateWarningBanner(currentCount, maxTabs, settings.enabled);
+}
+
+// Update warning banner visibility and content
+function updateWarningBanner(currentCount, maxTabs, enabled) {
+  const banner = document.getElementById('warningBanner');
+  const title = document.getElementById('warningTitle');
+  const message = document.getElementById('warningMessage');
+  
+  if (!enabled) {
+    banner.classList.add('hidden');
+    return;
+  }
+  
+  if (currentCount >= maxTabs) {
+    banner.classList.remove('hidden');
+    
+    if (currentCount > maxTabs) {
+      title.textContent = 'Over Limit!';
+      message.textContent = `You have ${currentCount - maxTabs} tab(s) over your limit of ${maxTabs}`;
+      banner.classList.add('danger');
+      banner.classList.remove('warning');
+    } else {
+      title.textContent = 'Limit Reached!';
+      message.textContent = `You have reached your maximum of ${maxTabs} tabs`;
+      banner.classList.add('warning');
+      banner.classList.remove('danger');
+    }
+  } else {
+    banner.classList.add('hidden');
+  }
 }
 
 // Setup event listeners

@@ -9,8 +9,19 @@
 <body>
   <div class="container">
     <header>
-      <h1>📑 Tab Limiter</h1>
+      <h1>Tab Limiter</h1>
     </header>
+
+    <!-- Warning Banner -->
+    <div id="warningBanner" class="warning-banner hidden">
+      <svg class="warning-icon" width="20" height="20" viewBox="0 0 20 20" fill="none">
+        <path d="M10 18a8 8 0 100-16 8 8 0 000 16zM10 6v4M10 14h.01" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+      <div class="warning-content">
+        <div class="warning-title" id="warningTitle">Tab Limit Reached!</div>
+        <div class="warning-message" id="warningMessage">You have reached your maximum tab limit</div>
+      </div>
+    </div>
 
     <div class="status-section">
       <div class="stat-card">
@@ -30,7 +41,7 @@
 
     <div class="control-section">
       <div class="control-row">
-        <span class="control-label">Enable Tab Limiter</span>
+        <span class="control-label">Enable</span>
         <label class="toggle">
           <input type="checkbox" id="enableToggle">
           <span class="toggle-slider"></span>
@@ -39,7 +50,7 @@
     </div>
 
     <div class="quick-settings">
-      <label for="quickLimit" class="input-label">Quick Limit Adjust</label>
+      <label for="quickLimit" class="input-label">Limit</label>
       <div class="input-group">
         <input type="number" id="quickLimit" min="1" max="100" placeholder="10">
         <button id="saveLimit" class="btn-primary">Set</button>
@@ -47,7 +58,7 @@
     </div>
 
     <footer>
-      <button id="openOptions" class="btn-secondary">⚙️ Settings</button>
+      <button id="openOptions" class="btn-secondary">Settings →</button>
     </footer>
   </div>
 

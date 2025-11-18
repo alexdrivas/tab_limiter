@@ -12,159 +12,151 @@
     <div class="header">
       <div class="header-content">
         <h1 class="header-title">Settings</h1>
-        <p class="header-description">Manage your tab limiting preferences and behavior</p>
       </div>
     </div>
 
-    <!-- Main Content -->
-    <div class="content">
-      <div class="settings-grid">
-        
-        <!-- Status Card -->
-        <div class="card">
-          <div class="card-header">
-            <h3 class="card-title">Status</h3>
-            <p class="card-description">Control the tab limiter on/off state</p>
-          </div>
-          <div class="card-content">
-            <div class="flex-between">
-              <div class="label-group">
-                <label class="label">Enable Tab Limiter</label>
-                <p class="label-description">Activate tab limiting and monitoring</p>
-              </div>
-              <button type="button" role="switch" id="enabledToggle" class="switch" aria-checked="false">
-                <span class="switch-thumb"></span>
-              </button>
-            </div>
-          </div>
-        </div>
-
-        <!-- Tab Limit Card -->
-        <div class="card">
-          <div class="card-header">
-            <h3 class="card-title">Tab Limit</h3>
-            <p class="card-description">Set the maximum number of tabs allowed</p>
-          </div>
-          <div class="card-content">
-            <div class="space-y-4">
-              <div class="flex-between">
-                <div class="label-group">
-                  <label class="label" for="maxTabsInput">Maximum Tabs</label>
-                  <p class="label-description">Number of tabs before limiting kicks in</p>
-                </div>
-                <div class="input-group">
-                  <input type="number" id="maxTabsInput" min="1" max="100" class="input-number">
-                  <span class="input-addon">tabs</span>
-                </div>
-              </div>
-              
-              <div class="slider-container">
-                <input type="range" id="maxTabsSlider" min="1" max="100" value="10" class="slider">
-                <div class="slider-labels">
-                  <span class="slider-label">1</span>
-                  <span class="slider-label">50</span>
-                  <span class="slider-label">100</span>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Behavior Card -->
-        <div class="card">
-          <div class="card-header">
-            <h3 class="card-title">Behavior</h3>
-            <p class="card-description">Choose what happens when limit is reached</p>
-          </div>
-          <div class="card-content">
-            <div class="radio-group" role="radiogroup">
-              
-              <!-- Block Option -->
-              <label class="radio-card">
-                <input type="radio" name="behavior" value="block" id="behaviorBlock" class="radio-input">
-                <div class="radio-card-content">
-                  <div class="radio-card-indicator"></div>
-                  <div class="radio-card-body">
-                    <div class="radio-card-title">
-                      <span class="radio-icon">🚫</span>
-                      Block New Tab
-                    </div>
-                    <p class="radio-card-description">Prevent new tabs from opening beyond the limit</p>
-                  </div>
-                </div>
-              </label>
-
-              <!-- Warn Option -->
-              <label class="radio-card">
-                <input type="radio" name="behavior" value="warn" id="behaviorWarn" class="radio-input">
-                <div class="radio-card-content">
-                  <div class="radio-card-indicator"></div>
-                  <div class="radio-card-body">
-                    <div class="radio-card-title">
-                      <span class="radio-icon">⚠️</span>
-                      Warn Only
-                    </div>
-                    <p class="radio-card-description">Show a warning notification but allow the tab</p>
-                  </div>
-                </div>
-              </label>
-
-              <!-- Auto-Close Option -->
-              <label class="radio-card">
-                <input type="radio" name="behavior" value="autoclose" id="behaviorAutoclose" class="radio-input">
-                <div class="radio-card-content">
-                  <div class="radio-card-indicator"></div>
-                  <div class="radio-card-body">
-                    <div class="radio-card-title">
-                      <span class="radio-icon">🔄</span>
-                      Auto-Close Oldest
-                    </div>
-                    <p class="radio-card-description">Automatically close the oldest tab to maintain limit</p>
-                  </div>
-                </div>
-              </label>
-
-            </div>
-          </div>
-        </div>
-
-        <!-- Current Status Card -->
-        <div class="card">
-          <div class="card-header">
-            <h3 class="card-title">Current Status</h3>
-            <p class="card-description">Real-time information about your tabs</p>
-          </div>
-          <div class="card-content">
-            <div class="stats-grid">
-              <div class="stat-card">
-                <div class="stat-label">Open Tabs</div>
-                <div class="stat-value" id="currentTabCount">-</div>
-              </div>
-              <div class="stat-card">
-                <div class="stat-label">Status</div>
-                <div class="stat-value stat-badge" id="statusBadge">-</div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-      </div>
-    </div>
-
-    <!-- Footer with Save Button -->
-    <div class="footer">
-      <div class="footer-content">
-        <p class="footer-text">Changes are saved automatically</p>
-        <button id="saveBtn" class="btn-primary">
-          <svg class="btn-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"></path>
-            <polyline points="17 21 17 13 7 13 7 21"></polyline>
-            <polyline points="7 3 7 8 15 8"></polyline>
+    <div class="main-layout">
+      <!-- Sidebar Navigation -->
+      <nav class="sidebar">
+        <button class="nav-item active" data-section="general">
+          <svg class="nav-icon" width="20" height="20" viewBox="0 0 20 20" fill="none">
+            <path d="M10 2.5a1.25 1.25 0 011.25 1.25v.833a5.833 5.833 0 013.333 3.334h.834a1.25 1.25 0 110 2.5h-.834a5.833 5.833 0 01-3.333 3.333v.833a1.25 1.25 0 11-2.5 0v-.833a5.833 5.833 0 01-3.333-3.333H4.583a1.25 1.25 0 110-2.5h.834A5.833 5.833 0 018.75 4.583v-.833A1.25 1.25 0 0110 2.5zm0 4.167a2.917 2.917 0 100 5.833 2.917 2.917 0 000-5.833z" fill="currentColor"/>
           </svg>
-          <span id="saveBtnText">Save Changes</span>
+          <span>General</span>
         </button>
+        <button class="nav-item" data-section="insights">
+          <svg class="nav-icon" width="20" height="20" viewBox="0 0 20 20" fill="none">
+            <path d="M2.5 10a7.5 7.5 0 1115 0 7.5 7.5 0 01-15 0zm7.5-5.833a5.833 5.833 0 100 11.666 5.833 5.833 0 000-11.666zM10 7.5a.833.833 0 01.833.833v3.334a.833.833 0 11-1.666 0V8.333A.833.833 0 0110 7.5zm0-1.667a.833.833 0 100-1.666.833.833 0 000 1.666z" fill="currentColor"/>
+          </svg>
+          <span>Insights</span>
+        </button>
+      </nav>
+
+      <!-- Main Content -->
+      <div class="content">
+        
+        <!-- General Section -->
+        <div id="general-section" class="section-content active">
+          <section class="settings-section">
+            <h2 class="section-title">Status</h2>
+            
+            <div class="setting-row">
+              <div class="setting-label">
+                <span class="label-text">Enable</span>
+              </div>
+              <div class="setting-control">
+                <button type="button" role="switch" id="enabledToggle" class="switch" aria-checked="false">
+                  <span class="switch-thumb"></span>
+                </button>
+              </div>
+            </div>
+
+            <div class="setting-row">
+              <div class="setting-label">
+                <span class="label-text">Open tabs</span>
+              </div>
+              <div class="setting-control">
+                <span class="stat-value" id="currentTabCount">-</span>
+              </div>
+            </div>
+          </section>
+
+          <!-- Tab Limit Section -->
+          <section class="settings-section">
+            <h2 class="section-title">Tab Limit</h2>
+            
+            <div class="setting-row-solo">
+              <input type="number" id="maxTabsInput" min="1" max="100" class="input-number">
+            </div>
+          </section>
+
+          <!-- Behavior Section -->
+          <section class="settings-section">
+            <h2 class="section-title">Behavior</h2>
+            
+            <div class="setting-row-solo">
+              <div class="radio-group" role="radiogroup">
+                  
+                  <label class="radio-option">
+                    <input type="radio" name="behavior" value="block" id="behaviorBlock" class="radio-input">
+                    <div class="radio-label">
+                      <div class="radio-indicator"></div>
+                      <span class="radio-text">
+                        Block new tabs
+                        <span class="tooltip-wrapper">
+                          <span class="tooltip-icon">ⓘ</span>
+                          <span class="tooltip">Prevents new tabs beyond the limit</span>
+                        </span>
+                      </span>
+                    </div>
+                  </label>
+
+                  <label class="radio-option">
+                    <input type="radio" name="behavior" value="warn" id="behaviorWarn" class="radio-input">
+                    <div class="radio-label">
+                      <div class="radio-indicator"></div>
+                      <span class="radio-text">
+                        Warn only
+                        <span class="tooltip-wrapper">
+                          <span class="tooltip-icon">ⓘ</span>
+                          <span class="tooltip">Shows a warning but allows the tab</span>
+                        </span>
+                      </span>
+                    </div>
+                  </label>
+
+                  <label class="radio-option">
+                    <input type="radio" name="behavior" value="autoclose" id="behaviorAutoclose" class="radio-input">
+                    <div class="radio-label">
+                      <div class="radio-indicator"></div>
+                      <span class="radio-text">
+                        Auto-close oldest
+                        <span class="tooltip-wrapper">
+                          <span class="tooltip-icon">ⓘ</span>
+                          <span class="tooltip">Closes the oldest tab when at limit</span>
+                        </span>
+                      </span>
+                    </div>
+                  </label>
+
+                </div>
+            </div>
+          </section>
+        </div>
+
+        <!-- Insights Section -->
+        <div id="insights-section" class="section-content">
+          
+          <!-- Recently Closed Tabs -->
+          <section class="settings-section">
+            <h2 class="section-title">Recently Closed Tabs</h2>
+            
+            <div id="closedTabsList" class="insights-list">
+              <p class="empty-state">No recently closed tabs</p>
+            </div>
+          </section>
+
+          <!-- Memory Intensive Tabs -->
+          <section class="settings-section">
+            <h2 class="section-title">Memory Intensive Tabs</h2>
+            
+            <div id="memoryTabsList" class="insights-list">
+              <p class="empty-state">No high memory tabs detected</p>
+            </div>
+          </section>
+
+          <!-- Duplicate Tabs -->
+          <section class="settings-section">
+            <h2 class="section-title">Duplicate Tabs</h2>
+            
+            <div id="duplicateTabsList" class="insights-list">
+              <p class="empty-state">No duplicate tabs found</p>
+            </div>
+          </section>
+
+        </div>
+
       </div>
-      <div id="saveStatus" class="save-status"></div>
     </div>
   </div>
 
