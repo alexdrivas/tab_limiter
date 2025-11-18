@@ -1,6 +1,6 @@
 # 📑 Tab Limiter - Chrome Extension
 
-A professional Chrome extension that helps you manage browser tabs by setting a maximum limit and preventing tab overload. Perfect for productivity, performance optimization, and maintaining focus.
+A Chrome extension that helps you manage browser tabs by setting a maximum limit and preventing tab overload. Perfect for productivity, performance optimization, and maintaining focus.
 
 ![Tab Limiter](icons/icon.svg)
 
@@ -28,7 +28,7 @@ A professional Chrome extension that helps you manage browser tabs by setting a 
 
 1. **Clone or Download** this repository:
    ```bash
-   git clone https://github.com/alexandrosdrivas/tab_limiter.git
+   git clone https://github.com/alexdrivas/tab_limiter.git
    cd tab_limiter
    ```
 
