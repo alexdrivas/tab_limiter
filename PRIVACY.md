@@ -1,6 +1,6 @@
 # Privacy Policy for Tab Limiter
 
-**Last Updated: November 17, 2024**
+**Last Updated: November 17, 2025**
 
 ## Overview
 Tab Limiter is committed to protecting your privacy. This extension does not collect, transmit, or share any personal information.
