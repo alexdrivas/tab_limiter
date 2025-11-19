@@ -6,9 +6,8 @@ Chrome extension for managing browser tabs by setting a maximum limit. Prevent t
 
 ### Core Limiting
 - Set custom tab limits (1-100)
-- Three behavior modes:
+- Two behavior modes:
   - **Block**: Prevent new tabs when at limit
-  - **Warn**: Show warning banner but allow tabs
   - **Auto-Close**: Automatically close oldest tab
 - Color-coded badge (🟢 green, 🟡 orange, 🔴 red)
 - Real-time tab count and progress bar

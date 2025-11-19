@@ -5,7 +5,7 @@
 const DEFAULT_SETTINGS = {
   maxTabs: 10,
   enabled: true,
-  behavior: 'block', // 'block', 'warn', or 'autoclose'
+  behavior: 'block', // 'block' or 'autoclose'
 };
 
 // Store for recently closed tabs (max 5)
@@ -53,17 +53,25 @@ chrome.tabs.onCreated.addListener(async (tab) => {
     });
   }
   
+  // Always update badge first to show accurate count
+  updateBadge();
+  
+  // Check if this is the extension's settings page - always allow it
+  // Check both url and pendingUrl (pendingUrl is set when tab is navigating)
+  const optionsUrl = chrome.runtime.getURL('options.html');
+  if ((tab.url && tab.url.startsWith(optionsUrl)) || 
+      (tab.pendingUrl && tab.pendingUrl.startsWith(optionsUrl))) {
+    return; // Don't enforce limits on settings page
+  }
+  
   const settings = await chrome.storage.sync.get(DEFAULT_SETTINGS);
   
   if (!settings.enabled) {
-    updateBadge();
     return;
   }
 
   const tabs = await chrome.tabs.query({});
   const tabCount = tabs.length;
-  
-  updateBadge();
 
   // Check if we've exceeded the limit
   if (tabCount > settings.maxTabs) {
@@ -105,6 +113,8 @@ chrome.tabs.onActivated.addListener(() => {
 
 // Handle when limit is exceeded
 async function handleLimitExceeded(newTab, currentCount, settings) {
+  const optionsUrl = chrome.runtime.getURL('options.html');
+  
   switch (settings.behavior) {
     case 'block':
       // Close the newly created tab
@@ -113,15 +123,12 @@ async function handleLimitExceeded(newTab, currentCount, settings) {
       }
       break;
 
-    case 'warn':
-      // Just show a warning in the popup banner (no action needed here)
-      break;
-
     case 'autoclose':
-      // Close the oldest tab (first tab that's not pinned)
+      // Close the oldest tab (first tab that's not pinned and not the settings page)
       const tabs = await chrome.tabs.query({ pinned: false });
-      if (tabs.length > 0) {
-        await chrome.tabs.remove(tabs[0].id);
+      const closableTab = tabs.find(tab => !tab.url || !tab.url.startsWith(optionsUrl));
+      if (closableTab) {
+        await chrome.tabs.remove(closableTab.id);
       }
       break;
   }

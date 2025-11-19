@@ -24,7 +24,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Service worker architecture
 - Chrome APIs: tabs, storage, action, runtime
 
-## [1.1.0] - 2025-11-18
+## [1.1.0] - 2025-11-19
 
 ### Added
 - **Warning Banner**: Prominent visual alert in popup when at/over limit
@@ -43,11 +43,18 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Moved analytics features from popup to Settings → Insights
 - Reduced visual clutter in Settings with cleaner section titles
 - Simplified Settings General page copy
+- Reduced behavior modes from three to two (removed "Warn only")
 
 ### Removed
 - Chrome system notifications (replaced with popup banner)
 - `notifications` permission (no longer needed)
 - `processes` permission (gracefully degrades on stable Chrome)
+- **"Warn only" behavior mode** (redundant with warning banner that shows in all modes)
+
+### Fixed
+- Settings page can now always be opened, even when at tab limit
+- Settings page is exempt from being auto-closed in "auto-close oldest" mode
+- Users can always access settings to adjust their limits or disable the extension
 
 ### Technical
 - Implemented tab lifecycle caching for closed tab history
@@ -55,6 +62,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Added `chrome.storage.local` for closed tabs persistence
 - Auto-refresh insights every 5 seconds when viewing
 - Reduced popup load time by removing heavy data queries
+- Whitelisted extension settings page from limit enforcement
 
 ## [Unreleased]
 

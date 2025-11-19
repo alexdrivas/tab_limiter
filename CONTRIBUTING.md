@@ -56,7 +56,7 @@ python3 tools/quick-icons.py
 
 4. **Test your changes**
    - Load extension in Chrome
-   - Test all behaviors (block, warn, auto-close)
+   - Test all behaviors (block, auto-close)
    - Verify on different tab counts
    - Check notifications work
    - Ensure badge updates correctly
@@ -115,7 +115,7 @@ function updateTabCount() {
 Before submitting a PR, verify:
 
 - [ ] Extension loads without errors
-- [ ] All three behaviors work (block, warn, auto-close)
+- [ ] Both behaviors work (block, auto-close)
 - [ ] Settings persist after browser restart
 - [ ] Badge updates in real-time
 - [ ] Notifications appear correctly

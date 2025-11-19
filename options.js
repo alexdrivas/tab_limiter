@@ -10,7 +10,6 @@ const DEFAULT_SETTINGS = {
 const enabledToggle = document.getElementById('enabledToggle');
 const maxTabsInput = document.getElementById('maxTabsInput');
 const behaviorBlock = document.getElementById('behaviorBlock');
-const behaviorWarn = document.getElementById('behaviorWarn');
 const behaviorAutoclose = document.getElementById('behaviorAutoclose');
 const currentTabCount = document.getElementById('currentTabCount');
 
@@ -43,8 +42,6 @@ async function loadSettings() {
   // Set behavior radio buttons
   if (settings.behavior === 'block') {
     behaviorBlock.checked = true;
-  } else if (settings.behavior === 'warn') {
-    behaviorWarn.checked = true;
   } else if (settings.behavior === 'autoclose') {
     behaviorAutoclose.checked = true;
   }
@@ -77,10 +74,6 @@ function setupEventListeners() {
     if (behaviorBlock.checked) await autoSave();
   });
   
-  behaviorWarn.addEventListener('change', async () => {
-    if (behaviorWarn.checked) await autoSave();
-  });
-  
   behaviorAutoclose.addEventListener('change', async () => {
     if (behaviorAutoclose.checked) await autoSave();
   });
@@ -101,7 +94,6 @@ async function autoSave() {
   
   // Get selected behavior
   let behavior = 'block';
-  if (behaviorWarn.checked) behavior = 'warn';
   if (behaviorAutoclose.checked) behavior = 'autoclose';
   
   // Save to storage
